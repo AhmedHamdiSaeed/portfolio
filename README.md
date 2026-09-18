@@ -1,6 +1,12 @@
-﻿# 💼 Ahmed Hamdi — Full-Stack Developer Portfolio
+# 💼 Ahmed Hamdi — Full-Stack Developer Portfolio
 
 Welcome to the personal portfolio repository of **Ahmed Hamdi**, a passionate **Full-Stack Developer** specializing in building scalable enterprise web applications, modern SaaS architectures, and high-performance frontend solutions using **.NET 9, ASP.NET Core, ABP Framework, and Angular (18/20)**.
+
+---
+
+## 🌐 Live Portfolio Deployment
+
+> 🚀 **Live Website**: [https://portfolio-gilt-delta-22.vercel.app](https://portfolio-gilt-delta-22.vercel.app)
 
 ---
 
