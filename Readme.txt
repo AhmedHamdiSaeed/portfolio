@@ -31,6 +31,7 @@ This responsive and interactive portfolio showcases my professional journey, tec
 ---
 
 ### 2. 🍽️ [Sahm Smart Restaurant POS & Kitchen Dashboard](https://github.com/AhmedHamdiSaeed/SmartRestaurantPOS)
+* **Live Demo (Vercel)**: [https://smart-restaurant-pos-front-end.vercel.app/](https://smart-restaurant-pos-front-end.vercel.app/)
 * **GitHub Repository**: [https://github.com/AhmedHamdiSaeed/SmartRestaurantPOS](https://github.com/AhmedHamdiSaeed/SmartRestaurantPOS)
 * **Tech Stack**: `Angular 18`, `NgRx SignalStore`, `TypeScript 5.5`, `RxJS`, `Tailwind CSS`, `Jest`, `Offline Queue Service`
 * **Key Highlights**:
