@@ -252,6 +252,100 @@
           </div>
         </div>
 
+        <!-- Architecture & Code Highlights Section -->
+        <div class="row mt-5" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-12">
+            <div class="p-4 rounded-4" style="background: var(--surface-color); border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);">
+              <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+                <h3 class="h4 mb-0 fw-bold"><i class="bi bi-code-square me-2 text-primary"></i>Architecture &amp; Code Highlights</h3>
+                <span class="badge bg-primary px-3 py-2">.NET 9 + Angular 20 + ABP Framework</span>
+              </div>
+              
+              <ul class="nav nav-tabs code-nav-tabs mb-3" id="codeTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="ddd-tab" data-bs-toggle="tab" data-bs-target="#ddd-content" type="button" role="tab" aria-controls="ddd-content" aria-selected="true">
+                    <i class="bi bi-diagram-3 me-1"></i> Multi-Tenant Entity (C#)
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="auth-tab" data-bs-toggle="tab" data-bs-target="#auth-content" type="button" role="tab" aria-controls="auth-content" aria-selected="false">
+                    <i class="bi bi-shield-lock me-1"></i> OpenIddict Configuration
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="docker-tab" data-bs-toggle="tab" data-bs-target="#docker-content" type="button" role="tab" aria-controls="docker-content" aria-selected="false">
+                    <i class="bi bi-box-seam me-1"></i> Docker Compose
+                  </button>
+                </li>
+              </ul>
+              
+              <div class="tab-content" id="codeTabContent">
+                <div class="tab-pane fade show active" id="ddd-content" role="tabpanel" aria-labelledby="ddd-tab">
+                  <pre class="code-block"><code><span style="color: #6a9955;">// Domain Entity with ABP Multi-Tenancy & Full Auditing</span>
+<span style="color: #569cd6;">public class</span> <span style="color: #4ec9b0;">Employee</span> : <span style="color: #4ec9b0;">FullAuditedAggregateRoot</span>&lt;<span style="color: #4ec9b0;">Guid</span>&gt;, <span style="color: #4ec9b0;">IMultiTenant</span>
+{
+    <span style="color: #569cd6;">public</span> <span style="color: #4ec9b0;">Guid</span>? <span style="color: #9cdcfe;">TenantId</span> { <span style="color: #569cd6;">get</span>; <span style="color: #569cd6;">set</span>; }
+    <span style="color: #569cd6;">public string</span> <span style="color: #9cdcfe;">EmployeeCode</span> { <span style="color: #569cd6;">get</span>; <span style="color: #569cd6;">private set</span>; }
+    <span style="color: #569cd6;">public string</span> <span style="color: #9cdcfe;">FullName</span> { <span style="color: #569cd6;">get</span>; <span style="color: #569cd6;">private set</span>; }
+    <span style="color: #569cd6;">public</span> <span style="color: #4ec9b0;">DepartmentType</span> <span style="color: #9cdcfe;">Department</span> { <span style="color: #569cd6;">get</span>; <span style="color: #569cd6;">private set</span>; }
+    <span style="color: #569cd6;">public decimal</span> <span style="color: #9cdcfe;">BasicSalary</span> { <span style="color: #569cd6;">get</span>; <span style="color: #569cd6;">private set</span>; }
+
+    <span style="color: #569cd6;">protected</span> <span style="color: #dcdcaa;">Employee</span>() { }
+
+    <span style="color: #569cd6;">public</span> <span style="color: #dcdcaa;">Employee</span>(<span style="color: #4ec9b0;">Guid</span> <span style="color: #9cdcfe;">id</span>, <span style="color: #4ec9b0;">Guid</span>? <span style="color: #9cdcfe;">tenantId</span>, <span style="color: #569cd6;">string</span> <span style="color: #9cdcfe;">code</span>, <span style="color: #569cd6;">string</span> <span style="color: #9cdcfe;">name</span>) : <span style="color: #569cd6;">base</span>(<span style="color: #9cdcfe;">id</span>)
+    {
+        <span style="color: #9cdcfe;">TenantId</span> = <span style="color: #9cdcfe;">tenantId</span>;
+        <span style="color: #9cdcfe;">EmployeeCode</span> = <span style="color: #4ec9b0;">Check</span>.<span style="color: #dcdcaa;">NotNullOrWhiteSpace</span>(<span style="color: #9cdcfe;">code</span>, <span style="color: #569cd6;">nameof</span>(<span style="color: #9cdcfe;">code</span>));
+        <span style="color: #9cdcfe;">FullName</span> = <span style="color: #4ec9b0;">Check</span>.<span style="color: #dcdcaa;">NotNullOrWhiteSpace</span>(<span style="color: #9cdcfe;">name</span>, <span style="color: #569cd6;">nameof</span>(<span style="color: #9cdcfe;">name</span>));
+    }
+}</code></pre>
+                </div>
+                <div class="tab-pane fade" id="auth-content" role="tabpanel" aria-labelledby="auth-tab">
+                  <pre class="code-block"><code><span style="color: #6a9955;">// OpenIddict OAuth2 / OpenID Connect Setup in .NET 9</span>
+<span style="color: #9cdcfe;">builder</span>.<span style="color: #9cdcfe;">Services</span>.<span style="color: #dcdcaa;">AddOpenIddict</span>()
+    .<span style="color: #dcdcaa;">AddCore</span>(<span style="color: #9cdcfe;">options</span> =&gt; {
+        <span style="color: #9cdcfe;">options</span>.<span style="color: #dcdcaa;">UseEntityFrameworkCore</span>()
+               .<span style="color: #dcdcaa;">UseDbContext</span>&lt;<span style="color: #4ec9b0;">ERPPlatformDbContext</span>&gt;();
+    })
+    .<span style="color: #dcdcaa;">AddServer</span>(<span style="color: #9cdcfe;">options</span> =&gt; {
+        <span style="color: #9cdcfe;">options</span>.<span style="color: #dcdcaa;">SetTokenEndpointUris</span>(<span style="color: #ce9178;">"/connect/token"</span>)
+               .<span style="color: #dcdcaa;">AllowPasswordFlow</span>()
+               .<span style="color: #dcdcaa;">AllowRefreshTokenFlow</span>()
+               .<span style="color: #dcdcaa;">AddDevelopmentEncryptionCertificate</span>()
+               .<span style="color: #dcdcaa;">AddDevelopmentSigningCertificate</span>()
+               .<span style="color: #dcdcaa;">UseAspNetCore</span>()
+               .<span style="color: #dcdcaa;">EnableTokenEndpointEndpointPassthrough</span>();
+    })
+    .<span style="color: #dcdcaa;">AddValidation</span>(<span style="color: #9cdcfe;">options</span> =&gt; {
+        <span style="color: #9cdcfe;">options</span>.<span style="color: #dcdcaa;">UseLocalServer</span>();
+        <span style="color: #9cdcfe;">options</span>.<span style="color: #dcdcaa;">UseAspNetCore</span>();
+    });</code></pre>
+                </div>
+                <div class="tab-pane fade" id="docker-content" role="tabpanel" aria-labelledby="docker-tab">
+                  <pre class="code-block"><code><span style="color: #6a9955;"># Production Docker Compose Multi-Service Architecture</span>
+<span style="color: #9cdcfe;">services:</span>
+  <span style="color: #4ec9b0;">sqlserver:</span>
+    <span style="color: #9cdcfe;">image:</span> <span style="color: #ce9178;">mcr.microsoft.com/mssql/server:2022-latest</span>
+    <span style="color: #9cdcfe;">environment:</span>
+      - <span style="color: #9cdcfe;">ACCEPT_EULA=Y</span>
+      - <span style="color: #9cdcfe;">SA_PASSWORD=SuperStrong_Pass123!</span>
+    <span style="color: #9cdcfe;">ports:</span>
+      - <span style="color: #ce9178;">"1433:1433"</span>
+  
+  <span style="color: #4ec9b0;">backend-api:</span>
+    <span style="color: #9cdcfe;">build:</span> <span style="color: #ce9178;">./src/ERPPlatform.HttpApi.Host</span>
+    <span style="color: #9cdcfe;">environment:</span>
+      - <span style="color: #9cdcfe;">ASPNETCORE_ENVIRONMENT=Production</span>
+    <span style="color: #9cdcfe;">ports:</span>
+      - <span style="color: #ce9178;">"44322:80"</span>
+    <span style="color: #9cdcfe;">depends_on:</span>
+      - <span style="color: #9cdcfe;">sqlserver</span></code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </section><!-- /Portfolio Details Section -->
@@ -269,6 +363,11 @@
       </div>
     </div>
   </footer>
+
+  <!-- Floating Dark / Light Theme Toggle Button -->
+  <button id="theme-toggle" class="theme-toggle-btn" title="Toggle Dark/Light Mode" aria-label="Toggle Theme">
+    <i class="bi bi-moon-stars"></i>
+  </button>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

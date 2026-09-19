@@ -3167,8 +3167,243 @@ section,
 }
 
 /*--------------------------------------------------------------
-# Starter Section Section
+# Dark Theme Mode & Theme Toggle
 --------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
+body.dark-mode {
+  --background-color: #0b1320;
+  --default-color: #cbd5e1;
+  --heading-color: #f8fafc;
+  --accent-color: #38bdf8;
+  --surface-color: #131f33;
+  --contrast-color: #ffffff;
+  --nav-color: #94a3b8;
+  --nav-hover-color: #38bdf8;
+  --nav-mobile-background-color: #0b1320;
+}
+
+body.dark-mode .light-background {
+  --background-color: #0f172a;
+  --surface-color: #1e293b;
+}
+
+body.dark-mode .header {
+  background: rgba(11, 19, 32, 0.95);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .portfolio .portfolio-entry,
+body.dark-mode .resume .experience-card,
+body.dark-mode .skill-item,
+body.dark-mode .stats-card,
+body.dark-mode .contact-card {
+  background: #131f33;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .accordion-item {
+  background-color: #131f33;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .accordion-button {
+  background-color: #131f33;
+  color: #f8fafc;
+}
+
+body.dark-mode .accordion-button:not(.collapsed) {
+  background-color: rgba(56, 189, 248, 0.1);
+  color: #38bdf8;
+}
+
+body.dark-mode .accordion-body {
+  background-color: #131f33;
+  color: #cbd5e1;
+}
+
+body.dark-mode pre.code-block {
+  background-color: #070d18;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Floating Theme Toggle Switch */
+.theme-toggle-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 80px;
+  z-index: 9999;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.1) rotate(15deg);
+  background: color-mix(in srgb, var(--accent-color), black 15%);
+}
+
+/*--------------------------------------------------------------
+# Live Production Pulse Badge
+--------------------------------------------------------------*/
+.live-pulse-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.live-pulse-badge .pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulse-green 1.8s infinite;
+}
+
+@keyframes pulse-green {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/*--------------------------------------------------------------
+# Stats Section Cards
+--------------------------------------------------------------*/
+.stats-card {
+  background: var(--surface-color);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border-radius: 16px;
+  padding: 24px 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.stats-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border-color: var(--accent-color);
+}
+
+.stats-card .stats-icon {
+  font-size: 2.2rem;
+  color: var(--accent-color);
+  margin-bottom: 8px;
+}
+
+.stats-card .stats-number {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--heading-color);
+  line-height: 1.1;
+  font-family: var(--heading-font);
+}
+
+.stats-card .stats-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  margin-top: 4px;
+}
+
+/*--------------------------------------------------------------
+# Contact Cards & Form
+--------------------------------------------------------------*/
+.contact .info-card {
+  background: var(--surface-color);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.contact .info-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-color);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.contact .info-card .icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(6, 92, 194, 0.1);
+  color: var(--accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.contact .info-card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 4px;
+  color: var(--heading-color);
+}
+
+.contact .info-card p,
+.contact .info-card a {
+  margin: 0;
+  font-size: 0.9rem;
+  color: color-mix(in srgb, var(--default-color), transparent 25%);
+}
+
+.contact .info-card a:hover {
+  color: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Code Highlight Snippets
+--------------------------------------------------------------*/
+pre.code-block {
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 13.5px;
+  line-height: 1.6;
+  overflow-x: auto;
+  max-height: 380px;
+}
+
+.code-nav-tabs .nav-link {
+  color: var(--default-color);
+  font-weight: 600;
+  font-size: 13.5px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 8px 16px;
+  border-radius: 0;
+}
+
+.code-nav-tabs .nav-link.active {
+  color: var(--accent-color);
+  background: transparent;
+  border-bottom-color: var(--accent-color);
 }

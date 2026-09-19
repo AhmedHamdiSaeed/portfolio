@@ -240,4 +240,32 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+  /**
+   * Theme Toggle (Dark / Light Mode)
+   */
+  const currentTheme = localStorage.getItem('portfolio-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  if (currentTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+  }
+
+  function updateThemeIcon() {
+    const isDark = document.body.classList.contains('dark-mode');
+    document.querySelectorAll('.theme-toggle-btn i').forEach(icon => {
+      icon.className = isDark ? 'bi bi-sun-fill' : 'bi bi-moon-stars';
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    updateThemeIcon();
+    document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.body.classList.toggle('dark-mode');
+        const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+        localStorage.setItem('portfolio-theme', theme);
+        updateThemeIcon();
+      });
+    });
+  });
+
 })();

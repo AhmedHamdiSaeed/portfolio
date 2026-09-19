@@ -68,7 +68,8 @@
           <li><a href="#hero">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#resume">Resume</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>       
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -86,16 +87,18 @@
 
           <div class="col-lg-6 hero-content" data-aos="fade-right" data-aos-delay="100">
             <div class="content-wrapper">
-              <h1 class="hero-title">Creative <span class="typed" data-typed-items="Developer"></span></h1>
-              <p class="lead">I build full-stack digital experiences that inspire and engage. Combining a passion for clean design with robust, scalable code, I transform ideas into seamless, high-performance web solutions.</p>
+              <h1 class="hero-title">Creative <span class="typed" data-typed-items="Full-Stack Developer,.NET Core Engineer,Angular Specialist,SaaS Architect"></span></h1>
+              <p class="lead">I build full-stack digital experiences that inspire and engage. Combining clean architecture with scalable code, I transform complex requirements into seamless, high-performance web solutions.</p>
 
-              <div class="hero-actions" data-aos="fade-up" data-aos-delay="300">
-                <a href="#portfolio" class="btn btn-primary">View My Work</a>
+              <div class="hero-actions d-flex flex-wrap gap-2" data-aos="fade-up" data-aos-delay="300">
+                <a href="#portfolio" class="btn btn-primary"><i class="bi bi-briefcase me-1"></i> View Projects</a>
+                <a href="https://github.com/AhmedHamdiSaeed" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="border: 2px solid var(--accent-color); color: var(--heading-color);"><i class="bi bi-file-earmark-person me-1"></i> View Resume</a>
+                <a href="#contact" class="btn btn-outline"><i class="bi bi-envelope me-1"></i> Contact Me</a>
               </div>
 
-              <div class="social-links" data-aos="fade-up" data-aos-delay="400">
-                <a href="https://www.linkedin.com/in/ahmed-hamdi-saeed/"><i class="bi bi-linkedin"></i></a>
-                <a href="https://github.com/AhmedHamdiSaeed"><i class="bi bi-github"></i></a>
+              <div class="social-links mt-4" data-aos="fade-up" data-aos-delay="400">
+                <a href="https://www.linkedin.com/in/ahmed-hamdi-saeed/" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
+                <a href="https://github.com/AhmedHamdiSaeed" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i></a>
               </div>
             </div>
           </div>
@@ -105,11 +108,11 @@
               <div class="floating-elements">
                 <div class="floating-card card-2" data-aos="zoom-in" data-aos-delay="400">
                   <i class="bi bi-code-slash"></i>
-                  <span>Development</span>
+                  <span>.NET 9 &amp; Angular</span>
                 </div>
                 <div class="floating-card card-3" data-aos="zoom-in" data-aos-delay="500">
-                  <i class="bi bi-lightning"></i>
-                  <span>Creative Ideas</span>
+                  <i class="bi bi-layers"></i>
+                  <span>Clean Architecture</span>
                 </div>
               </div>
               <img src="assets/img/profile/profile-square-1.webp" alt="Portfolio Hero" class="img-fluid hero-main-image">
@@ -121,6 +124,42 @@
       </div>
 
     </section><!-- /Hero Section -->
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats section light-background py-5">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row g-4 justify-content-center text-center">
+          <div class="col-xl-3 col-lg-3 col-md-6 col-6">
+            <div class="stats-card h-100">
+              <div class="stats-icon"><i class="bi bi-calendar-check"></i></div>
+              <div class="stats-number"><span data-purecounter-start="0" data-purecounter-end="2" data-purecounter-duration="1" class="purecounter"></span>+</div>
+              <div class="stats-label">Years Experience</div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-md-6 col-6">
+            <div class="stats-card h-100">
+              <div class="stats-icon"><i class="bi bi-boxes"></i></div>
+              <div class="stats-number"><span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>+</div>
+              <div class="stats-label">Enterprise Modules Built</div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-md-6 col-6">
+            <div class="stats-card h-100">
+              <div class="stats-icon"><i class="bi bi-diagram-3"></i></div>
+              <div class="stats-number"><span data-purecounter-start="0" data-purecounter-end="100" data-purecounter-duration="1" class="purecounter"></span>%</div>
+              <div class="stats-label">Domain-Driven Design</div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-md-6 col-6">
+            <div class="stats-card h-100">
+              <div class="stats-icon"><i class="bi bi-shield-check"></i></div>
+              <div class="stats-number"><span data-purecounter-start="0" data-purecounter-end="100" data-purecounter-duration="1" class="purecounter"></span>%</div>
+              <div class="stats-label">Secure &amp; Multi-Tenant</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Stats Section -->
 
     <!-- About Section -->
     <section id="about" class="about section">
@@ -335,7 +374,7 @@
                   <a href="erp-platform-details.html" class="portfolio-full-click" style="position: absolute; inset: 0; z-index: 2;" aria-label="View ERP Platform Details"></a>
                   <div class="entry-overlay">
                     <div class="overlay-content" style="position: relative; z-index: 3;">
-                      <div class="entry-meta">Full Stack • ABP Framework &amp; .NET 9 &amp; Angular 20</div>
+                      <div class="entry-meta">Full Stack • ABP Framework &amp; .NET 9 &amp; Angular 20 <span class="live-pulse-badge"><span class="pulse-dot"></span> Live Production</span></div>
                       <h3 class="entry-title"><a href="erp-platform-details.html" class="text-white text-decoration-none">Enterprise SaaS ERP Platform</a></h3>
                       <p class="text-light small mb-3 opacity-75">Modular multi-tenant ERP platform featuring HR, CRM, and Inventory workflows, OpenIddict authentication, automated database migrations, and Docker containerization.</p>
                       <div class="entry-links" onclick="event.stopPropagation();">
@@ -393,8 +432,79 @@
 
     </section><!-- /Portfolio Section -->
 
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contact</h2>
+        <p>Get in touch for software engineering opportunities, collaborations, or enterprise project inquiries.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="info-card">
+              <div class="icon-box">
+                <i class="bi bi-geo-alt"></i>
+              </div>
+              <div>
+                <h4>Location</h4>
+                <p>Riyadh, Saudi Arabia / Egypt (Remote Ready)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="info-card">
+              <div class="icon-box">
+                <i class="bi bi-linkedin"></i>
+              </div>
+              <div>
+                <h4>LinkedIn</h4>
+                <p><a href="https://www.linkedin.com/in/ahmed-hamdi-saeed/" target="_blank" rel="noopener noreferrer">ahmed-hamdi-saeed</a></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="info-card">
+              <div class="icon-box">
+                <i class="bi bi-github"></i>
+              </div>
+              <div>
+                <h4>GitHub</h4>
+                <p><a href="https://github.com/AhmedHamdiSaeed" target="_blank" rel="noopener noreferrer">github.com/AhmedHamdiSaeed</a></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
   </main>
 
+  <footer id="footer" class="footer dark-background">
+    <div class="container">
+      <div class="copyright text-center">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Ahmed Hamdi</strong> <span>All Rights Reserved</span></p>
+      </div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.linkedin.com/in/ahmed-hamdi-saeed/" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/AhmedHamdiSaeed" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Dark / Light Theme Toggle Button -->
+  <button id="theme-toggle" class="theme-toggle-btn" title="Toggle Dark/Light Mode" aria-label="Toggle Theme">
+    <i class="bi bi-moon-stars"></i>
+  </button>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

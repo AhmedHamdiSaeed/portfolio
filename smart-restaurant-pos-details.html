@@ -244,6 +244,101 @@
           </div>
         </div>
 
+        <!-- Architecture & Code Highlights Section -->
+        <div class="row mt-5" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-12">
+            <div class="p-4 rounded-4" style="background: var(--surface-color); border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);">
+              <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+                <h3 class="h4 mb-0 fw-bold"><i class="bi bi-code-square me-2 text-primary"></i>Architecture &amp; Code Highlights</h3>
+                <span class="badge bg-primary px-3 py-2">Angular 18 + NgRx SignalStore + AI Streams</span>
+              </div>
+              
+              <ul class="nav nav-tabs code-nav-tabs mb-3" id="posCodeTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="signal-tab" data-bs-toggle="tab" data-bs-target="#signal-content" type="button" role="tab" aria-controls="signal-content" aria-selected="true">
+                    <i class="bi bi-cpu me-1"></i> NgRx SignalStore (TypeScript)
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="ai-tab" data-bs-toggle="tab" data-bs-target="#ai-content" type="button" role="tab" aria-controls="ai-content" aria-selected="false">
+                    <i class="bi bi-robot me-1"></i> AI Stream Service
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="offline-tab" data-bs-toggle="tab" data-bs-target="#offline-content" type="button" role="tab" aria-controls="offline-content" aria-selected="false">
+                    <i class="bi bi-wifi-off me-1"></i> Offline Queue Manager
+                  </button>
+                </li>
+              </ul>
+              
+              <div class="tab-content" id="posCodeTabContent">
+                <div class="tab-pane fade show active" id="signal-content" role="tabpanel" aria-labelledby="signal-tab">
+                  <pre class="code-block"><code><span style="color: #6a9955;">// Reactive State Management with Angular Signals & NgRx SignalStore</span>
+<span style="color: #569cd6;">export const</span> <span style="color: #4ec9b0;">OrderStore</span> = <span style="color: #dcdcaa;">signalStore</span>(
+  { <span style="color: #9cdcfe;">providedIn</span>: <span style="color: #ce9178;">'root'</span> },
+  <span style="color: #dcdcaa;">withState</span>&lt;<span style="color: #4ec9b0;">OrderState</span>&gt;({
+    <span style="color: #9cdcfe;">orders</span>: [],
+    <span style="color: #9cdcfe;">activeFilter</span>: <span style="color: #ce9178;">'all'</span>,
+    <span style="color: #9cdcfe;">isLoading</span>: <span style="color: #569cd6;">false</span>,
+    <span style="color: #9cdcfe;">isSyncing</span>: <span style="color: #569cd6;">false</span>
+  }),
+  <span style="color: #dcdcaa;">withComputed</span>((<span style="color: #9cdcfe;">store</span>) =&gt; ({
+    <span style="color: #9cdcfe;">kitchenOrders</span>: <span style="color: #dcdcaa;">computed</span>(() =&gt; 
+      <span style="color: #9cdcfe;">store</span>.<span style="color: #dcdcaa;">orders</span>().<span style="color: #dcdcaa;">filter</span>(<span style="color: #9cdcfe;">o</span> =&gt; <span style="color: #9cdcfe;">o</span>.<span style="color: #9cdcfe;">status</span> === <span style="color: #4ec9b0;">OrderStatus</span>.<span style="color: #9cdcfe;">InKitchen</span>)
+    ),
+    <span style="color: #9cdcfe;">readyOrdersCount</span>: <span style="color: #dcdcaa;">computed</span>(() =&gt; 
+      <span style="color: #9cdcfe;">store</span>.<span style="color: #dcdcaa;">orders</span>().<span style="color: #dcdcaa;">filter</span>(<span style="color: #9cdcfe;">o</span> =&gt; <span style="color: #9cdcfe;">o</span>.<span style="color: #9cdcfe;">status</span> === <span style="color: #4ec9b0;">OrderStatus</span>.<span style="color: #9cdcfe;">Ready</span>).<span style="color: #9cdcfe;">length</span>
+    )
+  })),
+  <span style="color: #dcdcaa;">withMethods</span>((<span style="color: #9cdcfe;">store</span>, <span style="color: #9cdcfe;">orderService</span> = <span style="color: #dcdcaa;">inject</span>(<span style="color: #4ec9b0;">OrderService</span>)) =&gt; ({
+    <span style="color: #dcdcaa;">advanceOrderStatus</span>(<span style="color: #9cdcfe;">orderId</span>: <span style="color: #569cd6;">string</span>, <span style="color: #9cdcfe;">nextStatus</span>: <span style="color: #4ec9b0;">OrderStatus</span>) {
+      <span style="color: #dcdcaa;">patchState</span>(<span style="color: #9cdcfe;">store</span>, {
+        <span style="color: #9cdcfe;">orders</span>: <span style="color: #9cdcfe;">store</span>.<span style="color: #dcdcaa;">orders</span>().<span style="color: #dcdcaa;">map</span>(<span style="color: #9cdcfe;">o</span> =&gt; <span style="color: #9cdcfe;">o</span>.<span style="color: #9cdcfe;">id</span> === <span style="color: #9cdcfe;">orderId</span> ? { ...<span style="color: #9cdcfe;">o</span>, <span style="color: #9cdcfe;">status</span>: <span style="color: #9cdcfe;">nextStatus</span> } : <span style="color: #9cdcfe;">o</span>)
+      });
+    }
+  }))
+);</code></pre>
+                </div>
+                <div class="tab-pane fade" id="ai-content" role="tabpanel" aria-labelledby="ai-tab">
+                  <pre class="code-block"><code><span style="color: #6a9955;">// Streaming AI Upselling & Suggestions with RxJS & Delays</span>
+<span style="color: #dcdcaa;">@Injectable</span>({ <span style="color: #9cdcfe;">providedIn</span>: <span style="color: #ce9178;">'root'</span> })
+<span style="color: #569cd6;">export class</span> <span style="color: #4ec9b0;">AiRecommendationService</span> {
+  <span style="color: #dcdcaa;">streamUpsellSuggestions</span>(<span style="color: #9cdcfe;">cartItems</span>: <span style="color: #4ec9b0;">CartItem</span>[]): <span style="color: #4ec9b0;">Observable</span>&lt;<span style="color: #569cd6;">string</span>&gt; {
+    <span style="color: #569cd6;">const</span> <span style="color: #9cdcfe;">prompt</span> = <span style="color: #569cd6;">this</span>.<span style="color: #dcdcaa;">buildContextPrompt</span>(<span style="color: #9cdcfe;">cartItems</span>);
+    <span style="color: #569cd6;">return</span> <span style="color: #569cd6;">this</span>.<span style="color: #dcdcaa;">fetchAiStream</span>(<span style="color: #9cdcfe;">prompt</span>).<span style="color: #dcdcaa;">pipe</span>(
+      <span style="color: #dcdcaa;">concatMap</span>(<span style="color: #9cdcfe;">chunk</span> =&gt; <span style="color: #dcdcaa;">from</span>(<span style="color: #9cdcfe;">chunk</span>.<span style="color: #dcdcaa;">split</span>(<span style="color: #ce9178;">''</span>))),
+      <span style="color: #dcdcaa;">concatMap</span>(<span style="color: #9cdcfe;">char</span> =&gt; <span style="color: #dcdcaa;">of</span>(<span style="color: #9cdcfe;">char</span>).<span style="color: #dcdcaa;">pipe</span>(<span style="color: #dcdcaa;">delay</span>(18))),
+      <span style="color: #dcdcaa;">scan</span>((<span style="color: #9cdcfe;">acc</span>, <span style="color: #9cdcfe;">char</span>) =&gt; <span style="color: #9cdcfe;">acc</span> + <span style="color: #9cdcfe;">char</span>, <span style="color: #ce9178;">''</span>),
+      <span style="color: #dcdcaa;">catchError</span>(() =&gt; <span style="color: #dcdcaa;">of</span>(<span style="color: #ce9178;">'Pair with signature Truffle Fries & Mint Lemonade.'</span>))
+    );
+  }
+}</code></pre>
+                </div>
+                <div class="tab-pane fade" id="offline-content" role="tabpanel" aria-labelledby="offline-tab">
+                  <pre class="code-block"><code><span style="color: #6a9955;">// Offline Resilience & Indexed Queue Synchronization</span>
+<span style="color: #569cd6;">export class</span> <span style="color: #4ec9b0;">OfflineQueueService</span> {
+  <span style="color: #569cd6;">private readonly</span> <span style="color: #9cdcfe;">STORAGE_KEY</span> = <span style="color: #ce9178;">'sahm_pos_offline_queue'</span>;
+
+  <span style="color: #dcdcaa;">enqueueTransaction</span>(<span style="color: #9cdcfe;">order</span>: <span style="color: #4ec9b0;">OrderPayload</span>): <span style="color: #569cd6;">void</span> {
+    <span style="color: #569cd6;">const</span> <span style="color: #9cdcfe;">queue</span> = <span style="color: #569cd6;">this</span>.<span style="color: #dcdcaa;">getQueue</span>();
+    <span style="color: #9cdcfe;">queue</span>.<span style="color: #dcdcaa;">push</span>({ ...<span style="color: #9cdcfe;">order</span>, <span style="color: #9cdcfe;">enqueuedAt</span>: <span style="color: #4ec9b0;">Date</span>.<span style="color: #dcdcaa;">now</span>() });
+    <span style="color: #9cdcfe;">localStorage</span>.<span style="color: #dcdcaa;">setItem</span>(<span style="color: #569cd6;">this</span>.<span style="color: #9cdcfe;">STORAGE_KEY</span>, <span style="color: #4ec9b0;">JSON</span>.<span style="color: #dcdcaa;">stringify</span>(<span style="color: #9cdcfe;">queue</span>));
+  }
+
+  <span style="color: #569cd6;">async</span> <span style="color: #dcdcaa;">syncPending</span>(): <span style="color: #4ec9b0;">Promise</span>&lt;<span style="color: #569cd6;">void</span>&gt; {
+    <span style="color: #569cd6;">const</span> <span style="color: #9cdcfe;">queue</span> = <span style="color: #569cd6;">this</span>.<span style="color: #dcdcaa;">getQueue</span>();
+    <span style="color: #569cd6;">for</span> (<span style="color: #569cd6;">const</span> <span style="color: #9cdcfe;">item</span> <span style="color: #569cd6;">of</span> <span style="color: #9cdcfe;">queue</span>) {
+      <span style="color: #569cd6;">await</span> <span style="color: #569cd6;">this</span>.<span style="color: #dcdcaa;">postWithRetry</span>(<span style="color: #9cdcfe;">item</span>);
+    }
+    <span style="color: #9cdcfe;">localStorage</span>.<span style="color: #dcdcaa;">removeItem</span>(<span style="color: #569cd6;">this</span>.<span style="color: #9cdcfe;">STORAGE_KEY</span>);
+  }
+}</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </section><!-- /Portfolio Details Section -->
@@ -261,6 +356,11 @@
       </div>
     </div>
   </footer>
+
+  <!-- Floating Dark / Light Theme Toggle Button -->
+  <button id="theme-toggle" class="theme-toggle-btn" title="Toggle Dark/Light Mode" aria-label="Toggle Theme">
+    <i class="bi bi-moon-stars"></i>
+  </button>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
